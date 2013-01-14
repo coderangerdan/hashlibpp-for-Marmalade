@@ -6,7 +6,7 @@ files
 subprojects
 {
 	iwgx
-	hashlibpp-for-marmalade
+	hashlibpp-for-Marmalade
 }
 
 assets
