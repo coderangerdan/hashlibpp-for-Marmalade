@@ -1,0 +1,15 @@
+files
+{
+	main.cpp
+}
+
+subprojects
+{
+	iwgx
+	hashlibpp-for-marmalade
+}
+
+assets
+{
+	(data)
+}
