@@ -14,9 +14,10 @@ Copy to the HashLibPP folder to your Marmalade\Modules folder, then add HashLib+
         hashlibpp
     }
 
-There is an example project HashLibExample that shows a simple sample within Marmalade as shown below
+There is an example project HashLibExample which shows an example Marmalade app as shown below
 
 ## Simple Marmalade Usage:
+
     #include "s3e.h"
     #include "iwgx.h"
     #include "hashlibpp.h"
@@ -75,6 +76,7 @@ There is an example project HashLibExample that shows a simple sample within Mar
 
 
 ## Licence:
+
     hashlib++ - a simple hash library for C++
 
     Copyright (c) 2007-2011 Benjamin Grüdelbach
@@ -102,6 +104,7 @@ There is an example project HashLibExample that shows a simple sample within Mar
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ## The original HashLib++ readme file:
+
     hashlib++ - a simple hash library for C++
     Copyright (c) 2007-2010 Benjamin Grüdelbach
 
