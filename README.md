@@ -5,7 +5,7 @@ HashLib++ encryption library converted to a Marmalade module. HashLib++ enables 
 
 Original project home page is: http://hashlib2plus.sourceforge.net/
 
-Add HashLib++ to your project as a subproject by modifying your project mkb file:
+Copy to the HashLibPP folder to your Marmalade\Modules folder, then add HashLib++ to your project as a subproject by modifying your project mkb file:
 
     subprojects
     {
@@ -14,8 +14,67 @@ Add HashLib++ to your project as a subproject by modifying your project mkb file
         hashlibpp
     }
 
+There is an example project HashLibExample that shows a simple sample within Marmalade as shown below
+
+## Simple Marmalade Usage:
+    #include "s3e.h"
+    #include "iwgx.h"
+    #include "hashlibpp.h"
+    #include <string>
+
+    int main()
+    {
+        // Set the string we want to hash
+        std::string hashString = "Hash this value";
+
+        // Hash our string
+        hashwrapper *sha256 = new sha256wrapper();
+        std::string sSHA256 = sha256->getHashFromString( hashString.c_str() );
+
+
+        // Initialise the IwGx drawing module
+        IwGxInit();
+
+        // Set the background colour to grey
+        IwGxSetColClear(0x88, 0x88, 0x88, 0);
+
+
+        // Wait for a quit request from the host OS
+        while (!s3eDeviceCheckQuitRequest())
+        {
+            // Clear the surface
+            IwGxClear();
+
+            // Use the built-in font to display the hash values
+            IwGxPrintString(5, 140, hashString.c_str() );
+            IwGxPrintString(5, 160, sSHA256.c_str() );
+
+            // Standard EGL-style flush of drawing to the surface
+            IwGxFlush();
+
+            // Standard EGL-style flipping of double-buffers
+            IwGxSwapBuffers();
+
+            // Sleep for 0ms to allow the OS to process events etc.
+            s3eDeviceYield(0);
+        }
+
+        // Shut down the IwGx drawing module
+        IwGxTerminate();
+
+        // Cleanup our hash wrapper
+        if( sha256 )
+        {
+            delete sha256;
+            sha256 = NULL;
+        }
+
+        return 0;
+    }
+
+
+
 ## Licence:
-    /*
     hashlib++ - a simple hash library for C++
 
     Copyright (c) 2007-2011 Benjamin Grüdelbach
@@ -41,7 +100,6 @@ Add HashLib++ to your project as a subproject by modifying your project mkb file
     ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    */
 
 ## The original HashLib++ readme file:
     hashlib++ - a simple hash library for C++
